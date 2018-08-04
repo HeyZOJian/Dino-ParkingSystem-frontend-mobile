@@ -10,9 +10,8 @@ export default class RobOrder extends React.Component {
   render(){
     const data1 = this.props.lotsList
     console.log(this.props.lotsList)
-    let num = 0
     return(
-      <div>
+      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
         {/* <div
           style={{
           backgroundColor: "#1a81d2",
@@ -32,8 +31,8 @@ export default class RobOrder extends React.Component {
           top:0,
           left:0,
           width:"100%",
-          zIndex:100}}>停车</NavBar>
-        <div style={{marginTop:'11%'}}></div>
+          zIndex:100}}>订单</NavBar>
+        <div style={{marginTop:45}}></div>
         {/* <NavBar mode="dark" style={{backgroundColor:'bule',position:"fixed"}}>订单</NavBar> */}
         {data1.map(data=>(
           <div style={{border:'4px solid #9e969633'}}> 
@@ -45,7 +44,7 @@ export default class RobOrder extends React.Component {
               }}>
                 <img 
                   style={{
-                  height: '64px',
+                  height: '62px',
                   marginLeft: '20px',
                   marginRight: '15px'
                 }}
@@ -59,11 +58,10 @@ export default class RobOrder extends React.Component {
                 </div>               
             </div>
                 <Button onClick={()=>this.props.robOrderHandle(data.id)}>抢单</Button>
-                {/* {num===data1.length?console.log(1):console.log(data1.length)} */}
-                {(num = num+1) && num===data1.length?<div style={{marginBottom:"13%"}}></div>:<div></div>}
           </div>         
         ))
       }
+      <div style={{marginBottom:50}}></div>    
       </div>
     );
   }

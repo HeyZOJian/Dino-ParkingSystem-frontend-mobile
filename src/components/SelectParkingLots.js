@@ -16,9 +16,24 @@ export default class SelectParkingLots extends React.Component{
       // const parkingBoyId = localStorage.getItem("id");
       let parkingLotId = 0;
       return(
-          <div>
+          <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
+            {/* <NavBar  style={{
+          backgroundColor:'#1a81d2',
+          position:"fixed",
+          top:0,
+          left:0,
+          width:"100%",
+          zIndex:100}}>订单</NavBar>
+        <div style={{marginTop:45}}></div> */}
         <NavBar
-      mode="dark" 
+      style={{
+        backgroundColor:'#1a81d2',
+        position:"fixed",
+        top:0,
+        left:0,
+        width:"100%",
+        zIndex:100}}
+
       leftContent="Back"
       rightContent={[
         // <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
@@ -31,12 +46,12 @@ export default class SelectParkingLots extends React.Component{
         history.go(-1)
       }}
     >选择停车场</NavBar>
-
-        <List renderHeader={() => ' '} className="my-list">
+      <div style={{marginTop:45}}></div>
+        <List  className="my-list">
         
         <Item>
           <select defaultValue="0" onChange={(e)=>parkingLotId = e.target.value}>
-            <option value="0">选择停车场</option>
+            <option value="0" style={{display:'none'}}>选择停车场</option>
             {this.props.lotsList.map(item=>
             <option value={item.id}>{item.name}(剩余容量：{item.size-item.carNum})</option>
             )}
@@ -44,7 +59,10 @@ export default class SelectParkingLots extends React.Component{
         </Item>
       </List>
 
-      <Button style={{marginTop:300,backgroundColor:"#1a81d2"}} onClick={()=>this.props.SelectParkingLotsHandler(parkingLotId)}>完成订单</Button>
+      <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:100,width:'100%'}} onClick={()=>{
+        if(parkingLotId === 0){alert('请选择停车场');return false}
+        this.props.SelectParkingLotsHandler(parkingLotId)}}>完成订单</Button>
+      
       </div>
       )
   }

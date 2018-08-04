@@ -20,7 +20,7 @@ export default class ParkingWorkList extends React.Component {
     //const data = this.props.lotsList
     console.log(this.props.lotsList)
     return(
-      <div>
+      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
         <NavBar  style={{
           backgroundColor:'#1a81d2',
           position:"fixed",
@@ -28,7 +28,7 @@ export default class ParkingWorkList extends React.Component {
           left:0,
           width:"100%",
           zIndex:100}}>停取工作列表</NavBar>
-        <div style={{marginTop:'11%'}}></div>
+        <div style={{marginTop:45}}></div>
 
         {this.props.lotsList.map(data=>(
           <div style={{border:'4px solid #9e969633'}}>
@@ -59,6 +59,7 @@ export default class ParkingWorkList extends React.Component {
               }
           </div>
         ))}
+        <div style={{marginBottom:50}}></div> 
       </div>
     );
   }
