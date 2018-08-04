@@ -8,7 +8,7 @@ const ParkingLotBashBoardAPI = {
   // },
   getServerData(successCallBack) {
     const parkingBoyid = 2;
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyid}/parkingLots`;
+    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyid}/noFullParkingLots`;
     axios
       .get(getDataUrl)
       .then((response) => {

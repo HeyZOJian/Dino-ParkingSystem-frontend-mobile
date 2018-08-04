@@ -6,7 +6,7 @@ const ParkingWorkListAPI = {
 //   },
   getServerData(successCallBack) {
     const parkingBoyId = 2;
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/orders/?parkingBoyId=${parkingBoyId}`;
+    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noHandleOrders`;
     axios
       .get(getDataUrl)
       .then((response) => {
