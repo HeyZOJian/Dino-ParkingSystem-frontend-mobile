@@ -12,23 +12,29 @@ export default class ConfirmUnpark extends React.Component{
       // const parkingBoyId = localStorage.getItem("id");
       let parkingLotId = 0;
       return(
-          <div>
+        <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
         <NavBar
-      mode="dark" 
+      style={{
+        backgroundColor:'#1a81d2',
+        position:"fixed",
+        top:0,
+        left:0,
+        width:"100%",
+        zIndex:100}}
+
       leftContent="Back"
       rightContent={[
         // <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
         // <Icon key="1" type="ellipsis" />,
       ]}
       // onLeftClick	={()=>window.location.href="/home/ParkingWorkList"}
-      // onLeftClick	={()=>this.props.history.push("/home/ParkingWorkList")}
-      onLeftClick = {()=>{
-        let history = createHistory()
-        // history = "/home/ParkingWorkList"
+      onLeftClick	={()=>{
+        let history = createHistory();
+        // history .push("/home/ParkingWorkList") 
         history.go(-1)
       }}
     >取车详情</NavBar>
-    
+    <div style={{marginTop:45}}></div>
 
     <div
               style={{
@@ -38,22 +44,17 @@ export default class ConfirmUnpark extends React.Component{
             }}>
               <img
                 style={{
-                height: '64px',
+                height: '55px',
+                marginLeft: '20px',
                 marginRight: '15px'
               }}
                 src={data.img}
                 alt=""/>
               <div style={{
-                lineHeight: 1
+                lineHeight: 1.5
               }}>
-                <div style={{marginBottom: '8px', fontWeight: 'bold'}}>{data.plateNumber}</div>
-                <div>停车时间:2018-07-21<span
-                  style={{
-            fontSize: '30px',
-            color: '#FF6E27'
-          }}></span>
-          
-                </div>
+                <div style={{marginBottom: '8px', fontWeight: 'bold',textAlign:"left"}}>车牌号：{data.plateNumber}</div>
+                <div>停车时间:&nbsp;{data.parkDate}<span style={{fontSize: '30px',color: '#FF6E27'}}></span></div> 
                 
                 </div>
                 
@@ -61,7 +62,7 @@ export default class ConfirmUnpark extends React.Component{
 
        
 
-      <Button style={{marginTop:300,backgroundColor:"#1a81d2"}} onClick={()=>this.props.ConfirmUnparkHandler(data.id)}>确定取车</Button>
+      <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:100,width:'100%'}} onClick={()=>this.props.ConfirmUnparkHandler(data.id)}>确定取车</Button>
       </div>
       )
   }
