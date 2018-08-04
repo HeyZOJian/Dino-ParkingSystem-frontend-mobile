@@ -3,7 +3,7 @@ import SelectParkingLots from "../components/SelectParkingLots";
 import ParkingLotDashboardAPI from '../API/ParkingLotDashboardAPI'
 
 const mapStateToProps = (state, ownProps) => {
-  let lotsList = state;
+  let lotsList = state.parkingLotList;
   return {lotsList}
 }
 

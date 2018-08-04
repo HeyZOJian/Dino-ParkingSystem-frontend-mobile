@@ -3,7 +3,7 @@ import HistoryOrder from "../components/HistoryOrder";
 import HistoryOrderAPI from '../API/HistoryOrderAPI'
 
 const mapStateToProps = (state, ownProps) => {
-    let lotsList = state;
+    let lotsList = state.historyOrderList;
   return {lotsList}
 }
 

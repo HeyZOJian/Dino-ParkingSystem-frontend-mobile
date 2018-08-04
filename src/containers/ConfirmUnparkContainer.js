@@ -3,8 +3,8 @@ import ConfirmUnpark from "../components/ConfirmUnpark";
 import ConfirmUnparkAPI from '../API/ConfirmUnparkAPI'
 
 const mapStateToProps = (state, ownProps) => {
-  let lotsList = state;
-  return {lotsList}
+  // let lotsList = state;
+  // return {lotsList}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
