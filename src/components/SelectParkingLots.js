@@ -59,7 +59,7 @@ export default class SelectParkingLots extends React.Component{
         </Item>
       </List>
 
-      <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:100,width:'100%'}} onClick={()=>{
+      <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:200,width:'100%'}} onClick={()=>{
         if(parkingLotId === 0){alert('请选择停车场');return false}
         this.props.SelectParkingLotsHandler(parkingLotId)}}>完成订单</Button>
       
