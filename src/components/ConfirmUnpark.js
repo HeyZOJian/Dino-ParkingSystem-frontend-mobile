@@ -41,6 +41,7 @@ export default class ConfirmUnpark extends React.Component{
               display: '-webkit-box',
               display: 'flex',
               padding: '15px 0',
+              fontSize:16
             }}>
               <img
                 style={{
@@ -53,8 +54,8 @@ export default class ConfirmUnpark extends React.Component{
               <div style={{
                 lineHeight: 1.5
               }}>
-                <div style={{marginBottom: '8px', fontWeight: 'bold',textAlign:"left"}}>车牌号：{data.plateNumber}</div>
-                <div>停车时间:&nbsp;{data.parkDate}<span style={{fontSize: '30px',color: '#FF6E27'}}></span></div> 
+                <div style={{marginBottom: '8px', textAlign:"left",marginBottom:14}}>车牌号：<span style={{fontWeight: 'bold',fontSize:17}}>{data.plateNumber}</span></div>
+                <div style={{marginBottom:10}}>停车时间:&nbsp;{data.parkDate}</div>    
                 
                 </div>
                 

@@ -57,7 +57,7 @@ export default class HistoryOrder extends React.Component {
         ))} */}
         <div>
     <Tabs tabs={tabs}
-      initialPage={1}
+      initialPage={0}
       onChange={(tab, index) => { console.log('onChange', index, tab); }}
       onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
     >
@@ -127,6 +127,7 @@ export default class HistoryOrder extends React.Component {
     </Tabs>
     <WhiteSpace />
   </div>
+  <div style={{marginBottom:50}}></div> 
       </div>
     );
   }

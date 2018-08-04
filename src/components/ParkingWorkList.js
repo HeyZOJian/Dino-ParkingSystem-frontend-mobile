@@ -31,7 +31,7 @@ export default class ParkingWorkList extends React.Component {
         <div style={{marginTop:45}}></div>
 
         {this.props.lotsList.map(data=>(
-          <div style={{border:'4px solid #9e969633'}}>
+          <div style={{border:'4px solid #9e969633',fontSize:16}}>
           <div
               style={{
               display: '-webkit-box',
@@ -49,8 +49,8 @@ export default class ParkingWorkList extends React.Component {
               <div style={{
                 lineHeight: 1.5
               }}>
-                <div style={{marginBottom: '8px', fontWeight: 'bold',textAlign:"left"}}>车牌号：{data.plateNumber}</div>
-                <div>停车时间:&nbsp;{data.parkDate}<span style={{fontSize: '30px',color: '#FF6E27'}}></span></div>     
+              <div style={{marginBottom: '8px', textAlign:"left",marginBottom:14}}>车牌号：<span style={{fontWeight: 'bold',fontSize:17}}>{data.plateNumber}</span></div>
+              <div style={{marginBottom:10}}>停车时间:&nbsp;{data.parkDate}</div>    
                 </div>            
               </div>
               {data.status==='waitPark'?
