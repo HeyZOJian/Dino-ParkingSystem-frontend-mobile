@@ -13,10 +13,10 @@ export default class RobOrder extends React.Component {
     let num = 0
     return(
       <div>
-        <div
+        {/* <div
           style={{
           backgroundColor: "#1a81d2",
-          height: '6%',
+          height: '8%',
           fontSize: 20,
           // verticalAlign: "middle",
           // lineHeight:25,
@@ -25,10 +25,16 @@ export default class RobOrder extends React.Component {
           left:0,
           width:"100%",
           zIndex:100,
-        }}>停车</div>
-        <div style={{marginTop:'6%'}}></div>
+        }}>停车</div> */}
+        <NavBar  style={{
+          backgroundColor:'#1a81d2',
+          position:"fixed",
+          top:0,
+          left:0,
+          width:"100%",
+          zIndex:100}}>停车</NavBar>
+        <div style={{marginTop:'11%'}}></div>
         {/* <NavBar mode="dark" style={{backgroundColor:'bule',position:"fixed"}}>订单</NavBar> */}
-          <div style={{color:'black'}}>3234444444444</div>
         {data1.map(data=>(
           <div style={{border:'4px solid #9e969633'}}> 
             <div 

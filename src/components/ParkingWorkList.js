@@ -21,7 +21,14 @@ export default class ParkingWorkList extends React.Component {
     console.log(this.props.lotsList)
     return(
       <div>
-        <NavBar mode="dark">停取工作列表</NavBar>
+        <NavBar  style={{
+          backgroundColor:'#1a81d2',
+          position:"fixed",
+          top:0,
+          left:0,
+          width:"100%",
+          zIndex:100}}>停取工作列表</NavBar>
+        <div style={{marginTop:'11%'}}></div>
 
         {this.props.lotsList.map(data=>(
           <div style={{border:'4px solid #9e969633'}}>
