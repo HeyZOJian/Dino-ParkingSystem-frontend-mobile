@@ -6,7 +6,10 @@ const ParkingWorkListAPI = {
 //   },
   getServerData(successCallBack) {
     const parkingBoyId = 2;
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noHandleOrders`;
+    const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
+    // let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noHandleOrders`;
+    let getDataUrl = `http://localhost:8081/parkingBoys/${parkingBoyId}/noHandleOrders`;
     axios
       .get(getDataUrl)
       .then((response) => {
@@ -27,6 +30,8 @@ const ParkingWorkListAPI = {
         successCallBack([...data])
       })
       .catch(function (error) {
+        alert("非法登录，请重新登录")
+        window.location.href="/login"
       })
       .then(function () {});
   },

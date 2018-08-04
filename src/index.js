@@ -18,7 +18,7 @@ ReactDOM.render(
             <div>              
                 <Route path="/login" component={LoginForm }></Route>
                 <Route path="/home" component={App}></Route> 
-                {/* {!localStorage.getItem("token") && (window.location.href.indexOf("/login")===-1)?<Redirect to="/login" />:<Route />}               */}
+                {!localStorage.getItem("token") && (window.location.href.indexOf("/login")===-1)?<Redirect to="/login" />:<Route />}              
             </div>
         </Router>
     </Provider>

@@ -7,6 +7,8 @@ const RobOrderAPI = {
     let self = this;
     // const parkingBoyId = localStorage.getItem("id");
     const parkingBoyId = 2;
+    const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
     console.log(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`)
     axios.
     put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2,"status":"finish"})

@@ -8,7 +8,8 @@ const RobOrderAPI = {
     console.log(111)
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    let getDataUrl = 'https://dino-parking-system-backend.herokuapp.com/orders/noRob';
+    // let getDataUrl = 'https://dino-parking-system-backend.herokuapp.com/orders/noRob';
+       let getDataUrl = 'http://localhost:8081/orders/noRob';
     axios
       .get(getDataUrl)
       .then((response) => {
@@ -36,7 +37,8 @@ const RobOrderAPI = {
     const parkingBoyId = 2;
     console.log(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`)
     axios.
-    put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
+    // put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
+    put(`http://localhost:8081/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
     .then(function (response) {
         console.log('success');
         alert("rob order successfully!")

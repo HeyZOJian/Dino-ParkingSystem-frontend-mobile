@@ -8,6 +8,8 @@ const ParkingLotBashBoardAPI = {
   // },
   getServerData(successCallBack) {
     const parkingBoyid = 2;
+    const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
     let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyid}/noFullParkingLots`;
     axios
       .get(getDataUrl)
@@ -21,6 +23,8 @@ const ParkingLotBashBoardAPI = {
           successCallBack(response.data)
       })
       .catch(function (error) {
+        alert("非法登录，请重新登录")
+        window.location.href="/login"
       })
       .then(function () {});
   },
