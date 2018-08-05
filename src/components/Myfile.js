@@ -54,7 +54,6 @@ export default class SelectParkingLots extends React.Component{
         <div style={{textAlign:'left',marginBottom:10}}>昵称：{data.nickname}</div>
         <div style={{textAlign:'left',marginBottom:10}}>电子邮件：{data.email}</div>
         <div style={{textAlign:'left',marginBottom:10}}>电话号码：{data.phone}</div>
-        <div style={{textAlign:'left',marginBottom:10}}>用户名：{data.username}</div>
       </Card.Body>
       {/* <Card.Footer content="footer content" extra={<div>extra footer content</div>} /> */}
     </Card>
