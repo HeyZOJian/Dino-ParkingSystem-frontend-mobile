@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabBar,Toast } from 'antd-mobile';
+import { TabBar,Toast,Modal } from 'antd-mobile';
 import '../index.css'
 import RobOrder from '../containers/RobOrderContainer'
 import ParkingWorkList from '../containers/ParkingWorkListContainer'
@@ -74,6 +74,7 @@ export default class Home extends React.Component {
         };
         //发生了错误事件
         socket.onerror = function () {
+        
             alert("Socket发生了错误");
             //此时可以尝试刷新页面
         }

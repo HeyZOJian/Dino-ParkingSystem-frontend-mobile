@@ -1,6 +1,6 @@
 // const axios = require('axios');
 import axios from "axios";
-import {Toast} from 'antd-mobile';
+import {Toast,Modal} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
 
 const ParkingLotBashBoardAPI = {
@@ -24,8 +24,10 @@ const ParkingLotBashBoardAPI = {
           successCallBack(response.data)
       })
       .catch(function (error) {
-        Toast.fail('非法登录，请重新登录', 1.5);
-        window.location.href="/login"
+        Modal.alert('非法登录，请重新登录')
+        setTimeout(()=>{
+          window.location.href="/login"
+        },2000)
       })
       .then(function () {});
   },
