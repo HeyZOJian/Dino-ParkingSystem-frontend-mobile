@@ -44,8 +44,8 @@ export default class RobOrder extends React.Component {
               }}>
                 <img 
                   style={{
-                  height: '62px',
-                  marginLeft: '20px',
+                  height: '50px',
+                  marginLeft: '15px',
                   marginRight: '15px'
                 }}
                   src={data.img}

@@ -45,9 +45,9 @@ export default class SelectParkingLots extends React.Component{
     <WhiteSpace size="lg" />
     <Card>
       <Card.Header
-        title="This is title"
+        
         thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
-        extra={<span>this is extra</span>}
+       
       />
       <Card.Body>
         <div style={{textAlign:'left',marginBottom:10}}>用户名：{data.username}</div>

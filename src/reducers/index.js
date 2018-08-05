@@ -3,7 +3,7 @@ export default (state = {
     parkingWorkList:[],
     historyOrderList:[],
     parkingLotList:[],
-    taskNum:5,
+    taskNum:0,
     newOrderMessage:'',
     isShowRootOrder:false,
     myfileData:[]
