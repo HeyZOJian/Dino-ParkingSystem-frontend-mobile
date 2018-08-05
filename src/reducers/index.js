@@ -5,7 +5,8 @@ export default (state = {
     parkingLotList:[],
     taskNum:5,
     newOrderMessage:'',
-    isShowRootOrder:false
+    isShowRootOrder:false,
+    myfileData:[]
 
 }, action) => {
     console.log("reducer")
@@ -53,6 +54,13 @@ export default (state = {
         case 'CLOSE_ROOT_MODAL': {
             let newState = JSON.parse(JSON.stringify(state));
             newState.isShowRootOrder = false;
+            return newState;
+        }
+        case 'GET_MY_FILE_DATA': {
+            
+            let newState = JSON.parse(JSON.stringify(state));
+            newState.myfileData = action.myfileData;
+            console.log( newState.myfileData)
             return newState;
         }
         default:

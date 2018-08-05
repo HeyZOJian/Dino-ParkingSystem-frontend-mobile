@@ -196,6 +196,7 @@ export default class Home extends React.Component {
                 selectedTab: 'yellowTab',
               });
               localStorage.setItem("status","4")
+              this.chagePage("/home/Myfile");
             }}
           >
             {/* {this.renderContent1('My')} */}

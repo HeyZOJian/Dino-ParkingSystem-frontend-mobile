@@ -9,7 +9,7 @@ import SelectParkingLots from './containers/SelectParkingLotsContainer';
 import ConfirmUnpark from './containers/ConfirmUnparkContainer'
 import HistoryOrder from './containers/HistoryOrderContainer'
 import Home from './containers/HomeContainer'
-import Test from './components/Test'
+import Myfile from './containers/MyfileContainer'
 
 function closest(el, selector) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -121,6 +121,7 @@ class App extends Component {
             <Route  path="/home/SelectParkingLots" component={SelectParkingLots}></Route>
             <Route  path="/home/ConfirmUnpark" component={ConfirmUnpark}></Route>
             <Route  path="/home/HistoryOrder" component={HistoryOrder}></Route>     
+            <Route  path="/home/Myfile" component={Myfile}></Route>
 
             {/* <Home {...props}  taskNum={this.state.taskNum}/>  */}
             <Home {...props} /> 

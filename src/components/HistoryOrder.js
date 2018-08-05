@@ -60,6 +60,7 @@ export default class HistoryOrder extends React.Component {
       initialPage={0}
       onChange={(tab, index) => { console.log('onChange', index, tab); }}
       onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+      style={{color:"blue"}}
     >
       <div >
       {this.props.lotsList.map(data=>(

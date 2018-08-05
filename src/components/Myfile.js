@@ -1,30 +1,34 @@
 import React from 'react';
-import { List,Button,NavBar,Toast} from 'antd-mobile';
-import createHistory from 'history/createBrowserHistory';
-const Item = List.Item;
+import { Card, WingBlank, WhiteSpace,NavBar,Button,Toast,Modal} from 'antd-mobile';
+
+const alert = Modal.alert;
 export default class SelectParkingLots extends React.Component{
     constructor() {
         super();
     }
 
     componentDidMount() {
-        this.props.getParkingLotsHandler();
+        this.props.getMyfile();
     }
+
+    showAlert = () => {
+        const alertInstance = alert('Delete', 'Are you sure???', [
+            { text: 'Cancel', onPress: () => console.log('cancel'), style: 'default' },
+            { text: 'OK', onPress: () => console.log('ok') },
+        ]);
+        setTimeout(() => {
+            // 可以调用close方法以在外部close
+            console.log('auto close');
+            alertInstance.close();
+        }, 500000);
+    };
       
   render(){
-      console.log(this.props.lotsList) 
-      // const parkingBoyId = localStorage.getItem("id");
-      let parkingLotId = 0;
+      console.log(this.props.myfileData)
+      const data = this.props.myfileData
       return(
           <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-            {/* <NavBar  style={{
-          backgroundColor:'#1a81d2',
-          position:"fixed",
-          top:0,
-          left:0,
-          width:"100%",
-          zIndex:100}}>订单</NavBar>
-        <div style={{marginTop:45}}></div> */}
+          
         <NavBar
       style={{
         backgroundColor:'#1a81d2',
@@ -33,36 +37,46 @@ export default class SelectParkingLots extends React.Component{
         left:0,
         width:"100%",
         zIndex:100}}
-
-      leftContent="Back"
-      rightContent={[
-        // <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-        // <Icon key="1" type="ellipsis" />,
-      ]}
-      // onLeftClick	={()=>window.location.href="/home/ParkingWorkList"}
-      onLeftClick	={()=>{
-        let history = createHistory();
-        // history .push("/home/ParkingWorkList") 
-        history.go(-1)
-      }}
-    >选择停车场</NavBar>
+    >个人资料</NavBar>
       <div style={{marginTop:45}}></div>
-        <List  className="my-list">
-        
-        <Item>
-          <select defaultValue="0" onChange={(e)=>parkingLotId = e.target.value}>
-            <option value="0" style={{display:'none'}}>选择停车场</option>
-            {this.props.lotsList.map(item=>
-            <option value={item.id}>{item.name}(剩余容量：{item.size-item.carNum})</option>
-            )}
-          </select>
-        </Item>
-      </List>
 
-      <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:200,width:'100%'}} onClick={()=>{
-        if(parkingLotId === 0){Toast.fail('请选择停车场', 1.5);;return false}
-        this.props.SelectParkingLotsHandler(parkingLotId)}}>完成订单</Button>
-      
+      <WingBlank size="lg">
+    <WhiteSpace size="lg" />
+    <WhiteSpace size="lg" />
+    <Card>
+      <Card.Header
+        title="This is title"
+        thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+        extra={<span>this is extra</span>}
+      />
+      <Card.Body>
+        <div style={{textAlign:'left',marginBottom:10}}>用户名：{data.username}</div>
+        <div style={{textAlign:'left',marginBottom:10}}>昵称：{data.nickname}</div>
+        <div style={{textAlign:'left',marginBottom:10}}>电子邮件：{data.email}</div>
+        <div style={{textAlign:'left',marginBottom:10}}>电话号码：{data.phone}</div>
+        <div style={{textAlign:'left',marginBottom:10}}>用户名：{data.username}</div>
+      </Card.Body>
+      {/* <Card.Footer content="footer content" extra={<div>extra footer content</div>} /> */}
+    </Card>
+    <WhiteSpace size="lg" />
+  </WingBlank>
+
+  <WingBlank size="lg">
+  
+  <Button style={{backgroundColor:"#1a81d2",marginBottom:100}}
+    onClick={() =>
+      alert('', '确认退出登录?', [
+        { text: '取消' },
+        { text: '确认', onPress: () => this.props.logOut() },
+      ])
+    }
+  >
+    退出登录
+  </Button>
+</WingBlank>
+
+      {/* <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:200,width:'100%'}} onClick={()=>{
+        this.props.logOut()}}>退出登录</Button> */}
       </div>
       )
   }
