@@ -37,16 +37,16 @@ const ParkingWorkListAPI = {
       .then(function () {});
   },
 
-  sendServerData(id,successCallBack) {
+  changeReadStatus(id,successCallBack) {
+    let self = this;
     // const parkingBoyId = localStorage.getItem("id");
     const parkingBoyId = 2;
     axios.
-    post(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2})
+    patch(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2})
     .then(function (response) {
-        console.log('success');
+        console.log('changeReadStatusSuccess');
         // alert("rob order successfully!")
-        Toast.success('抢单成功', 1.5);
-        successCallBack(response.status);
+        self.getServerData(successCallBack)
     }) 
     .catch(function (error) {
         console.log(error);

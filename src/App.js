@@ -23,15 +23,11 @@ class App extends Component {
   }
 
   ParkingWorkListPage = () => {
-    return <ParkingWorkList  num={this.reduce}/>; 
+    return <ParkingWorkList  num={this.reduce} history={this.props.history}/>; 
   };
 
   render() {
     const {...props} = this.props
-    var path2 = {
-      pathname:'/home/ParkingWorkList',
-      query:{name:'ocean'},
-    }
     
     return (
       <div className={styles.App}>
@@ -42,7 +38,7 @@ class App extends Component {
             <Route  path="/home/ConfirmUnpark" component={ConfirmUnpark}></Route>
             <Route  path="/home/HistoryOrder" component={HistoryOrder}></Route>     
 
-            <Home {...props} taskNum={this.state.taskNum}/> 
+            <Home {...props}  taskNum={this.state.taskNum}/> 
           </div>
       </div>
     );
