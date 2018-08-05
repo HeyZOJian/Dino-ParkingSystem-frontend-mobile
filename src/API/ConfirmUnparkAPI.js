@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Toast} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
 
 const RobOrderAPI = {
@@ -14,7 +15,8 @@ const RobOrderAPI = {
     put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2,"status":"finish"})
     .then(function (response) {
         console.log('success');
-        alert("unpark car successfully!")
+        // alert("unpark car successfully!")
+        Toast.success('取车成功', 1.5);
         localStorage.setItem("status","2")
         const history = createHistory();
         history.go(-1)

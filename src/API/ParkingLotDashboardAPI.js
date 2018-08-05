@@ -1,5 +1,6 @@
 // const axios = require('axios');
 import axios from "axios";
+import {Toast} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
 
 const ParkingLotBashBoardAPI = {
@@ -23,7 +24,7 @@ const ParkingLotBashBoardAPI = {
           successCallBack(response.data)
       })
       .catch(function (error) {
-        alert("非法登录，请重新登录")
+        Toast.fail('非法登录，请重新登录', 1.5);
         window.location.href="/login"
       })
       .then(function () {});
@@ -38,7 +39,8 @@ const ParkingLotBashBoardAPI = {
     put(`https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`,{"orderId":parseInt(localStorage.getItem("orderId"))})
     .then(function (response) {
         console.log('success');
-        alert("park car successfully!")
+        // alert("park car successfully!")
+        Toast.success('停车成功', 1.5);
         // window.location.href="/home/ParkingWorkList"
         const history = createHistory();
         history.go(-1)

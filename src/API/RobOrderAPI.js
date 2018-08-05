@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Toast} from 'antd-mobile';
 
 const RobOrderAPI = {
   initServerData(dispatch, action) {
@@ -25,7 +26,7 @@ const RobOrderAPI = {
         successCallBack([...data])
       })
       .catch(function (error) {
-        alert("非法登录，请重新登录")
+        Toast.fail('非法登录，请重新登录', 1.5);
         window.location.href="/login"
       })
       .then(function () {});
@@ -41,7 +42,7 @@ const RobOrderAPI = {
     put(`http://localhost:8081/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
     .then(function (response) {
         console.log('success');
-        alert("rob order successfully!")
+        Toast.success('抢单成功', 1.5);
         self.getServerData(successCallBack)
         // localStorage.setItem("status","2")
         // window.location.href="/home/ParkingWorkList"

@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Toast} from 'antd-mobile';
 
 const ParkingWorkListAPI = {
 //   initServerData(dispatch, action) {
@@ -30,7 +31,7 @@ const ParkingWorkListAPI = {
         successCallBack([...data])
       })
       .catch(function (error) {
-        alert("非法登录，请重新登录")
+        Toast.fail('非法登录，请重新登录', 1.5);
         window.location.href="/login"
       })
       .then(function () {});
@@ -43,7 +44,8 @@ const ParkingWorkListAPI = {
     post(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2})
     .then(function (response) {
         console.log('success');
-        alert("rob order successfully!")
+        // alert("rob order successfully!")
+        Toast.success('抢单成功', 1.5);
         successCallBack(response.status);
     }) 
     .catch(function (error) {

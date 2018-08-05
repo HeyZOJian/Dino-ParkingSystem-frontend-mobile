@@ -1,13 +1,22 @@
-import {Button,NavBar, Icon} from 'antd-mobile';
+import {Button,NavBar, Icon,Toast} from 'antd-mobile';
 import React from 'react';
 
 export default class ParkingWorkList extends React.Component {
 
   componentDidMount() {
-        this.props.getParkingLotsHandler();
+      // Toast.loading('Loading...', 30, () => {
+      //   console.log('Load complete !!!');
+      // });
+  
+      // setTimeout(() => {
+      //   Toast.hide();
+      // }, 3000);
+    
+    
+    this.props.getParkingLotsHandler();
   }
 
-  chageSelectParkingLotsPage=(orderId)=>{
+  chageSelectParkingLotsPage=(orderId)=>{  
     localStorage.setItem("orderId",orderId)  
     this.props.history.push('/home/SelectParkingLots')
   }

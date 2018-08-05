@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Toast} from 'antd-mobile';
 
 const HistoryOrderAPI = {
   getServerData(successCallBack) {
@@ -13,7 +14,7 @@ const HistoryOrderAPI = {
         successCallBack(response.data)
       })
       .catch(function (error) {
-        alert("非法登录，请重新登录")
+        Toast.fail('非法登录，请重新登录', 1.5);
         window.location.href="/login"
       })
       .then(function () {});

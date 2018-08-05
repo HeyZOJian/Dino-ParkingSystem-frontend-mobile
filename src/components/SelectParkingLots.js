@@ -1,5 +1,5 @@
 import React from 'react';
-import { List,Button,NavBar} from 'antd-mobile';
+import { List,Button,NavBar,Toast} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
 const Item = List.Item;
 export default class SelectParkingLots extends React.Component{
@@ -60,7 +60,7 @@ export default class SelectParkingLots extends React.Component{
       </List>
 
       <Button style={{backgroundColor:"#1a81d2",position:"fixed",bottom:200,width:'100%'}} onClick={()=>{
-        if(parkingLotId === 0){alert('请选择停车场');return false}
+        if(parkingLotId === 0){Toast.fail('请选择停车场', 1.5);;return false}
         this.props.SelectParkingLotsHandler(parkingLotId)}}>完成订单</Button>
       
       </div>
