@@ -68,6 +68,7 @@ export default class ParkingWorkList extends React.Component {
               }
           </div>
         ))}
+        <Button onClick={()=>{console.log(this.props.num);this.props.num}}>详情</Button>
         <div style={{marginBottom:50}}></div> 
       </div>
     );

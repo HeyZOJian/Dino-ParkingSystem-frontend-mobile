@@ -14,6 +14,9 @@ notification.config({
 });
 
 class Login extends Component {
+  state={
+    taskNum:0
+  }
 
   render() {
     
@@ -62,8 +65,8 @@ class NormalLoginForm extends React.Component {
       .validateFields((err, values) => {
         if (!err) {
           //  console.log('Received values of form: ', values);
-          // axios.post("https://dino-parking-system-backend.herokuapp.com/login", {
-            axios.post("http://localhost:8081/login", {
+          axios.post("https://dino-parking-system-backend.herokuapp.com/login", {
+            // axios.post("http://localhost:8081/login", {
             "username": values.userName,
             "password": values.password
           }).then(function (response) {
@@ -74,8 +77,9 @@ class NormalLoginForm extends React.Component {
             localStorage.setItem("nickname",'admin')
             localStorage.setItem("status",'1')
             
+         
             //  history.push("/EmployeeManage");
-            window.location.href="home/RobOrder";
+            // window.location.href="home/RobOrder";
             //return (<Redirect to="/EmployeeManage" />);
            // this.props.history.push('/EmployeeManage')
           }).catch(function (error) {

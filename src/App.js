@@ -11,19 +11,38 @@ import HistoryOrder from './containers/HistoryOrderContainer'
 import Test from './components/Test'
 
 class App extends Component {
+  state={
+    taskNum:10
+  }
+
+  reduce=()=>{
+    console.log(111)
+    this.setState({
+      taskNum:this.state.taskNum-1
+    });
+  }
+
+  ParkingWorkListPage = () => {
+    return <ParkingWorkList  num={this.reduce}/>; 
+  };
+
   render() {
     const {...props} = this.props
+    var path2 = {
+      pathname:'/home/ParkingWorkList',
+      query:{name:'ocean'},
+    }
     
     return (
       <div className={styles.App}>
           <div>
             <Route exact path="/home/RobOrder" component={RobOrder}></Route>
-            <Route  path="/home/ParkingWorkList" component={ParkingWorkList}></Route>
+            <Route  path='/home/ParkingWorkList' component={this.ParkingWorkListPage} ></Route>
             <Route  path="/home/SelectParkingLots" component={SelectParkingLots}></Route>
             <Route  path="/home/ConfirmUnpark" component={ConfirmUnpark}></Route>
-
             <Route  path="/home/HistoryOrder" component={HistoryOrder}></Route>     
-            <Home {...props}/> 
+
+            <Home {...props} taskNum={this.state.taskNum}/> 
           </div>
       </div>
     );
