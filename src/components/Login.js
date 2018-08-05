@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Modal} from 'antd-mobile'
 //import '../css/login.css';
 import 'antd/dist/antd.css';
 import { Form, Icon, Input, Button, notification, Checkbox } from 'antd';
@@ -79,14 +80,14 @@ class NormalLoginForm extends React.Component {
             localStorage.setItem("id",cookies.id)
             // localStorage.setItem("role",cookies.role)
             localStorage.setItem("status",'1')
-            
-         
+                
             window.location.href="home/RobOrder";
             //return (<Redirect to="/EmployeeManage" />);
            // this.props.history.push('/EmployeeManage')
           }).catch(function (error) {
             console.log(error)
-            openNotification();
+            Modal.alert('登录失败')
+            // openNotification();
           })
         }
       });
