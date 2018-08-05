@@ -51,16 +51,16 @@ export default class Home extends React.Component {
         //获得消息事件
         socket.onmessage = function (msg) {
             console.log(msg.data); 
-          //  let data = JSON.parse(msg.data)
-          //  if(data.type==="unRead"){
-          //     self.props.getOfflineOrder(data.unReadNum);
-          //  }else if(data.type==="newOrder"){
-          //     self.props.sendNewOrder(data.message);
-          //  }else if(data.type==="freeze"){
-          //     localStorage.removeItem("token");
-          //     Toast.fail('您的账号已被冻结，请联系相关经理', 3);
-          //     window.location
-          //  }
+           let data = JSON.parse(msg.data)
+           if(data.type==="unRead"){
+              self.props.getOfflineOrder(data.unReadNum);
+           }else if(data.type==="newOrder"){
+              self.props.sendNewOrder(data.message);
+           }else if(data.type==="freeze"){
+              localStorage.removeItem("token");
+              Toast.fail('您的账号已被冻结，请联系相关经理', 3);
+              window.location.href="/login"
+           }
             // self.props.sendNewOrder("hello World Test");
             // setTimeout(function(){
             //   self.props.sendNewOrder("hello World Test");

@@ -14,18 +14,26 @@ const ParkingWorkListAPI = {
     axios
       .get(getDataUrl)
       .then((response) => {
-        const data = response
-          .data
+        let reverseData = response.data.reverse();
+        const data = reverseData
           .map(serverData => {
             let img = ''
             if(serverData.status === 'waitPark'){
-               img ='http://okc9ihakz.bkt.clouddn.com/parkingcar.svg';
+               if(serverData.read){
+                 img ='http://okc9ihakz.bkt.clouddn.com/parkingcar.svg';
+               }else{
+                 img ='http://okc9ihakz.bkt.clouddn.com/newpark.jpg';
+               }          
             }else{
-               img = 'http://okc9ihakz.bkt.clouddn.com/%E8%BD%A6%E8%BE%86%E7%AE%A1%E7%90%86-01.svg';
+              if(serverData.read){
+                img = 'http://okc9ihakz.bkt.clouddn.com/%E8%BD%A6%E8%BE%86%E7%AE%A1%E7%90%86-01.svg';
+              }else{
+                img = 'http://okc9ihakz.bkt.clouddn.com/newUnPark.jpg'
+              }            
             }
-            const {plateNumber,id,parkDate,status,parkingLotName} = serverData;
+            const {plateNumber,id,parkDate,status,parkingLotName,receipt,read} = serverData;
             
-            return {plateNumber,img,id,parkDate,status,parkingLotName};
+            return {plateNumber,img,id,parkDate,status,parkingLotName,receipt,read};
           })
           ;
         successCallBack([...data])
@@ -38,6 +46,7 @@ const ParkingWorkListAPI = {
   },
 
   changeReadStatus(id,successCallBack) {
+    console.log("changeReadStatus")
     // const parkingBoyId = localStorage.getItem("id");
     const parkingBoyId = 2;
     axios.

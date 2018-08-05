@@ -79,7 +79,7 @@ class NormalLoginForm extends React.Component {
             
          
             //  history.push("/EmployeeManage");
-            // window.location.href="home/RobOrder";
+            window.location.href="home/RobOrder";
             //return (<Redirect to="/EmployeeManage" />);
            // this.props.history.push('/EmployeeManage')
           }).catch(function (error) {
