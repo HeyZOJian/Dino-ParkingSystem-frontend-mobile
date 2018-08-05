@@ -1,5 +1,5 @@
 import React from 'react';
-import { List,Button,NavBar,Toast} from 'antd-mobile';
+import { List,Button,NavBar,Toast,Modal} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
 const Item = List.Item;
 export default class SelectParkingLots extends React.Component{
@@ -8,7 +8,12 @@ export default class SelectParkingLots extends React.Component{
     }
 
     componentDidMount() {
+      if(localStorage.getItem("token")!=undefined){
         this.props.getParkingLotsHandler();
+    }else{
+        window.location.href="/login"
+    }  
+        
     }
       
   render(){

@@ -24,10 +24,15 @@ const ParkingLotBashBoardAPI = {
           successCallBack(response.data)
       })
       .catch(function (error) {
-        Modal.alert('非法登录，请重新登录')
-        setTimeout(()=>{
-          window.location.href="/login"
-        },2000)
+        if(error.response.status!==403){
+          Modal.alert('非法登录，请重新登录')
+        }else{
+          alert(error.response.data)
+        }
+        
+        // setTimeout(()=>{
+        //   window.location.href="/login"
+        // },2000)
       })
       .then(function () {});
   },

@@ -10,7 +10,12 @@ const tabs = [
 export default class HistoryOrder extends React.Component {
 
   componentDidMount() {
-        this.props.getHistoryOrderHandler();
+    if(localStorage.getItem("token")!=undefined){
+      this.props.getHistoryOrderHandler();
+  }else{
+      window.location.href="/login"
+  }  
+        
   }
 
   render(){

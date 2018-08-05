@@ -15,8 +15,12 @@ const HistoryOrderAPI = {
         successCallBack(response.data)
       })
       .catch(function (error) {
-        // Toast.fail('非法登录，请重新登录', 1.5);
-        Modal.alert('非法登录，请重新登录')
+        if(error.response.status===403){
+          Modal.alert('非法登录，请重新登录')
+        }else{
+          console.log(typeof(error))
+          alert(error)
+        }
         setTimeout(()=>{
           window.location.href="/login"
         },2000)

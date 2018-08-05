@@ -39,7 +39,12 @@ const ParkingWorkListAPI = {
         successCallBack([...data])
       })
       .catch(function (error) {
-        Modal.alert('非法登录，请重新登录')
+        if(error.response.status===403){
+          Modal.alert('非法登录，请重新登录')
+        }else{
+          console.log(typeof(error))
+          alert(error)
+        }
         setTimeout(()=>{
           window.location.href="/login"
         },2000)

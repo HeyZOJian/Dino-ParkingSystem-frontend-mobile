@@ -4,7 +4,11 @@ import React from 'react';
 export default class RobOrder extends React.Component {
 
   componentDidMount() {
-        this.props.getOrderHandler();
+        if(localStorage.getItem("token")!=undefined){
+            this.props.getOrderHandler();
+        }else{
+            window.location.href="/login"
+        }       
       }
 
   render(){

@@ -8,7 +8,12 @@ export default class SelectParkingLots extends React.Component{
     }
 
     componentDidMount() {
-        this.props.getMyfile();
+        if(localStorage.getItem("token")!=undefined){
+            this.props.getMyfile();
+        }else{
+            window.location.href="/login"
+        }  
+        
     }
 
     showAlert = () => {

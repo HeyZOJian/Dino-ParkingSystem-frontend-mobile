@@ -23,7 +23,12 @@ export default class ParkingWorkList extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getParkingLotsHandler();
+    if(localStorage.getItem("token")!=undefined){
+      this.props.getParkingLotsHandler();
+  }else{
+      window.location.href="/login"
+  }  
+    
   }
 
   chageSelectParkingLotsPage=(data)=>{  
