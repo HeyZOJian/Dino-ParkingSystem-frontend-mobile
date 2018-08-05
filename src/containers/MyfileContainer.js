@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logOut: (parkingLotId) => {
-      localStorage.removeItem("token");
+      // localStorage.removeItem("token");
+      localStorage.clear()
       window.location.href="/login"
     },
     getMyfile: () =>{MyfileAPI.getServerData(myfileData => dispatch({type:'GET_MY_FILE_DATA',myfileData}))}

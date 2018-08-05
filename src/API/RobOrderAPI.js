@@ -49,7 +49,7 @@ const RobOrderAPI = {
         // window.location.href="/home/ParkingWorkList"
     }) 
     .catch(function (error) {
-        console.log(error);
+        Toast.success('抢单失败', 1.5);
     })
   }
 
