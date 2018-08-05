@@ -1,4 +1,4 @@
-import {Button,NavBar, Icon,Toast,Row, Col,Modal, List, WhiteSpace, WingBlank} from 'antd-mobile';
+import {Button,NavBar, Icon,Toast,Modal, List, WhiteSpace, WingBlank} from 'antd-mobile';
 import React from 'react';
 
 function closest(el, selector) {
@@ -43,7 +43,7 @@ export default class ParkingWorkList extends React.Component {
       [key]: true,
     });
     console.log(id)
-    // this.props.changeReadStatus(id)
+    this.props.changeReadStatus(id)
   }
   onClose = key => () => {
     this.setState({
@@ -123,14 +123,14 @@ export default class ParkingWorkList extends React.Component {
 
         <WingBlank>
         {/* <Button onClick={this.showModal('modal1')}>basic</Button> */}
-        <WhiteSpace />
+       
         <Modal
           visible={this.state.modal1}
           transparent
           maskClosable={false}
           onClose={this.onClose('modal1')}
           title="Title"
-          footer={[{ text: 'Ok', onPress: () => { console.log('ok'); this.onClose('modal1')(); } }]}
+          footer={[{ text: 'Ok', onPress: () => { this.onClose('modal1')();this.props.getParkingLotsHandler() } }]}
           wrapProps={{ onTouchStart: this.onWrapTouchStart }}
         >
           <div style={{ height: 150, overflow: 'scroll' }}>

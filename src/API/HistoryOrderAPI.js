@@ -6,8 +6,8 @@ const HistoryOrderAPI = {
     const parkingBoyId = 2;
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    // let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/historyOrders`;
-    let getDataUrl = `http://localhost:8081/parkingBoys/${parkingBoyId}/historyOrders`
+    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/historyOrders`;
+    // let getDataUrl = `http://localhost:8081/parkingBoys/${parkingBoyId}/historyOrders`
     axios
       .get(getDataUrl)
       .then((response) => {

@@ -14,8 +14,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         ParkingWorkListAPI.getServerData(ordersByParkingBoy => dispatch({type:'GET_ALL_ORDERS_BY_PARKINGBOY',ordersByParkingBoy}))
     },
     changeReadStatus: (id) => {
-      ParkingWorkListAPI.changeReadStatus(id,ordersByParkingBoy => dispatch({type:'GET_ALL_ORDERS_BY_PARKINGBOY',ordersByParkingBoy}));
-    }
+      
+      ParkingWorkListAPI.changeReadStatus(id, () => {
+        let num = -1
+        dispatch({type:'CHANGE_TASK_NUM',num})
+      });
+    },
   }
 }
 

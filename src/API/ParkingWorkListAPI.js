@@ -38,7 +38,6 @@ const ParkingWorkListAPI = {
   },
 
   changeReadStatus(id,successCallBack) {
-    let self = this;
     // const parkingBoyId = localStorage.getItem("id");
     const parkingBoyId = 2;
     axios.
@@ -46,7 +45,7 @@ const ParkingWorkListAPI = {
     .then(function (response) {
         console.log('changeReadStatusSuccess');
         // alert("rob order successfully!")
-        self.getServerData(successCallBack)
+        successCallBack()
     }) 
     .catch(function (error) {
         console.log(error);

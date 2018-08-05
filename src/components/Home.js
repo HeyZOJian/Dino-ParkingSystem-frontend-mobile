@@ -1,11 +1,22 @@
 import React from 'react';
-import { TabBar } from 'antd-mobile';
+import { TabBar,Toast } from 'antd-mobile';
 import '../index.css'
 import RobOrder from '../containers/RobOrderContainer'
 import ParkingWorkList from '../containers/ParkingWorkListContainer'
 import SelectParkingLots from '../containers/SelectParkingLotsContainer';
 
 import createHistory from 'history/createBrowserHistory'
+
+function closest(el, selector) {
+  const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+  while (el) {
+    if (matchesSelector.call(el, selector)) {
+      return el;
+    }
+    el = el.parentElement;
+  }
+  return null;
+}
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,7 +25,6 @@ export default class Home extends React.Component {
       selectedTab: 'redTab',
       hidden: false,
       fullScreen: true,
-      taskNum:this.props.taskNum
     };
   }
 
@@ -41,11 +51,20 @@ export default class Home extends React.Component {
         //获得消息事件
         socket.onmessage = function (msg) {
             console.log(msg.data); 
-            setTimeout(function(){
-               self.setState({
-              taskNum:3
-            })
-            },5000) 
+          //  let data = JSON.parse(msg.data)
+          //  if(data.type==="unRead"){
+          //     self.props.getOfflineOrder(data.unReadNum);
+          //  }else if(data.type==="newOrder"){
+          //     self.props.sendNewOrder(data.message);
+          //  }else if(data.type==="freeze"){
+          //     localStorage.removeItem("token");
+          //     Toast.fail('您的账号已被冻结，请联系相关经理', 3);
+          //     window.location
+          //  }
+            // self.props.sendNewOrder("hello World Test");
+            // setTimeout(function(){
+            //   self.props.sendNewOrder("hello World Test");
+            // },5000) 
            
             //发现消息进入    开始处理前端触发逻辑
         };
@@ -68,6 +87,7 @@ export default class Home extends React.Component {
   
 
   render() {
+    console.log(this.props.taskNum)
     return (
       <div style={this.state.fullScreen ? { position: 'fixed',  width: '100%', bottom: 0,height:'10%',marginTop:'10%' } : { height: 400 }}>
         <TabBar
@@ -122,7 +142,8 @@ export default class Home extends React.Component {
             }
             title="停取"
             key="Koubei"
-            badge={this.state.taskNum}
+            // badge={this.state.taskNum}
+            badge={this.props.taskNum}        
             selected={localStorage.getItem("status") === '2'}
             onPress={() => {
               this.setState({
