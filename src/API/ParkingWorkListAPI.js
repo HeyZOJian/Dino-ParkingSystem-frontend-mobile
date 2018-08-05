@@ -6,7 +6,7 @@ const ParkingWorkListAPI = {
 //     this.getServerData(dispatch, action);
 //   },
   getServerData(successCallBack) {
-    const parkingBoyId = 2;
+    const parkingBoyId = localStorage.getItem("id");
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
     let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noHandleOrders`;
@@ -50,9 +50,9 @@ const ParkingWorkListAPI = {
   changeReadStatus(id,successCallBack) {
     console.log("changeReadStatus")
     // const parkingBoyId = localStorage.getItem("id");
-    const parkingBoyId = 2;
+    const parkingBoyId = localStorage.getItem("id");
     axios.
-    patch(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2})
+    patch(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":parkingBoyId})
     .then(function (response) {
         console.log('changeReadStatusSuccess');
         // alert("rob order successfully!")

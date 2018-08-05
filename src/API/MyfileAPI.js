@@ -7,7 +7,7 @@ const RobOrderAPI = {
   getServerData(successCallBack) {
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    let parkingBoyId = 2
+    const parkingBoyId = localStorage.getItem("id");
     let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/users/${parkingBoyId}`;
       //  let getDataUrl = 'http://localhost:8081/orders/noRob';
     axios

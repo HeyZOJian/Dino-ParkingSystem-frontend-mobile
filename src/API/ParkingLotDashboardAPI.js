@@ -8,10 +8,10 @@ const ParkingLotBashBoardAPI = {
   //   this.getServerData(dispatch, action);
   // },
   getServerData(successCallBack) {
-    const parkingBoyid = 2;
+    const parkingBoyId = localStorage.getItem("id");
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyid}/noFullParkingLots`;
+    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noFullParkingLots`;
     axios
       .get(getDataUrl)
       .then((response) => {
@@ -34,8 +34,7 @@ const ParkingLotBashBoardAPI = {
 
   putServerData(parkingLotId) {
     let self = this;
-    // const parkingBoyId = localStorage.getItem("id");
-    const parkingBoyId = 2;
+    const parkingBoyId = localStorage.getItem("id");
     console.log(`https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`)
     axios.
     put(`https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`,{"orderId":parseInt(localStorage.getItem("orderId"))})

@@ -4,9 +4,9 @@ import {Toast,Modal} from 'antd-mobile';
 
 const HistoryOrderAPI = {
   getServerData(successCallBack) {
-    const parkingBoyId = 2;
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
+    const parkingBoyId = localStorage.getItem("id");
     let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/historyOrders`;
     // let getDataUrl = `http://localhost:8081/parkingBoys/${parkingBoyId}/historyOrders`
     axios

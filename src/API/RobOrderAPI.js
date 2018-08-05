@@ -36,11 +36,10 @@ const RobOrderAPI = {
 
   sendServerData(id,successCallBack) {
     let self = this;
-    // const parkingBoyId = localStorage.getItem("id");
-    const parkingBoyId = 2;
+    const parkingBoyId = localStorage.getItem("id");
     console.log(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`)
     axios.
-    put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
+    put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":parkingBoyId,"status":"waitPark"})
     // put(`http://localhost:8081/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
     .then(function (response) {
         console.log('success');

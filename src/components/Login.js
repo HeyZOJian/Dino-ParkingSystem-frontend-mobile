@@ -70,15 +70,17 @@ class NormalLoginForm extends React.Component {
             "username": values.userName,
             "password": values.password
           }).then(function (response) {
-            console.log(response.headers.authorization)
-            console.log("hahaha")
+            // console.log(response.headers.authorization)
+            // console.log(response.headers.cookies)
+            // console.log(response.headers)
+            const cookies = JSON.parse(response.headers.cookies)
             const token = response.headers.authorization
             localStorage.setItem("token", token);
-            localStorage.setItem("nickname",'admin')
+            localStorage.setItem("id",cookies.id)
+            // localStorage.setItem("role",cookies.role)
             localStorage.setItem("status",'1')
             
          
-            //  history.push("/EmployeeManage");
             window.location.href="home/RobOrder";
             //return (<Redirect to="/EmployeeManage" />);
            // this.props.history.push('/EmployeeManage')
