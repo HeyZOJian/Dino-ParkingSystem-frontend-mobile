@@ -137,7 +137,7 @@ export default class ParkingWorkList extends React.Component {
               </div>
           </div>
               {data.status==='waitPark'?
-              <Button onClick={()=>this.chageSelectParkingLotsPage(data)} style={{fontSize:15}}>查看停车场</Button>
+              <Button onClick={()=>this.chageSelectParkingLotsPage(data)} style={{fontSize:15}}>停车</Button>
               :<Button onClick={()=>this.chageConfirmUnparkPage(data)} style={{fontSize:15}}>取车</Button>
               }
               

@@ -38,9 +38,11 @@ export default (state = {
         case 'CHANGE_TASK_NUM': {
             console.log(action.num)
             let newState = JSON.parse(JSON.stringify(state));
-            newState.taskNum = newState.taskNum + action.num;
-            console.log(newState.taskNum)
-            return newState;
+            if(newState.taskNum!==0){
+                newState.taskNum = newState.taskNum + action.num;
+                console.log(newState.taskNum)
+                return newState;
+            }       
         }
         case 'CHANGE_ORDER_MESSAGE': {
             let newState = JSON.parse(JSON.stringify(state));
