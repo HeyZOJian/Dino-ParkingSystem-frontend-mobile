@@ -1,5 +1,6 @@
 import axios from "axios";
 import {Toast,Modal} from 'antd-mobile';
+import GlobalUrl from '../contant/GlobalUrl'
 
 const ParkingWorkListAPI = {
 //   initServerData(dispatch, action) {
@@ -9,7 +10,7 @@ const ParkingWorkListAPI = {
     const parkingBoyId = localStorage.getItem("id");
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noHandleOrders`;
+    let getDataUrl = `${GlobalUrl.request}/parkingBoys/${parkingBoyId}/noHandleOrders`;
     // let getDataUrl = `http://localhost:8081/parkingBoys/${parkingBoyId}/noHandleOrders`;
     axios
       .get(getDataUrl)
@@ -31,9 +32,9 @@ const ParkingWorkListAPI = {
                 img = 'http://okc9ihakz.bkt.clouddn.com/newUnPark.jpg'
               }            
             }
-            const {plateNumber,id,parkDate,status,parkingLotName,receipt,read} = serverData;
+            const {plateNumber,id,parkDate,status,parkingLotName,receiptId,read} = serverData;
             
-            return {plateNumber,img,id,parkDate,status,parkingLotName,receipt,read};
+            return {plateNumber,img,id,parkDate,status,parkingLotName,receiptId,read};
           })
           ;
         successCallBack([...data])
@@ -57,7 +58,7 @@ const ParkingWorkListAPI = {
     // const parkingBoyId = localStorage.getItem("id");
     const parkingBoyId = localStorage.getItem("id");
     axios.
-    patch(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":parkingBoyId})
+    patch(`${GlobalUrl.request}/orders/${id}`, {"parkingBoyId":parkingBoyId})
     .then(function (response) {
         console.log('changeReadStatusSuccess');
         // alert("rob order successfully!")

@@ -2,6 +2,7 @@
 import axios from "axios";
 import {Toast,Modal} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
+import GlobalUrl from '../contant/GlobalUrl'
 
 const ParkingLotBashBoardAPI = {
   // initServerData(dispatch, action) {
@@ -11,7 +12,7 @@ const ParkingLotBashBoardAPI = {
     const parkingBoyId = localStorage.getItem("id");
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/noFullParkingLots`;
+    let getDataUrl = `${GlobalUrl.request}/parkingBoys/${parkingBoyId}/noFullParkingLots`;
     axios
       .get(getDataUrl)
       .then((response) => {
@@ -40,9 +41,9 @@ const ParkingLotBashBoardAPI = {
   putServerData(parkingLotId) {
     let self = this;
     const parkingBoyId = localStorage.getItem("id");
-    console.log(`https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`)
+    console.log(`http://localhost:8081/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`)
     axios.
-    put(`https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`,{"orderId":parseInt(localStorage.getItem("orderId"))})
+    put(`${GlobalUrl.request}/parkingBoys/${parkingBoyId}/parkingLots/${parkingLotId}`,{"orderId":parseInt(localStorage.getItem("orderId"))})
     .then(function (response) {
         console.log('success');
         // alert("park car successfully!")

@@ -1,13 +1,13 @@
 import axios from "axios";
 import {Toast,Modal} from 'antd-mobile';
-
+import GlobalUrl from '../contant/GlobalUrl'
 
 const HistoryOrderAPI = {
   getServerData(successCallBack) {
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
     const parkingBoyId = localStorage.getItem("id");
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/parkingBoys/${parkingBoyId}/historyOrders`;
+    let getDataUrl = `${GlobalUrl.request}/parkingBoys/${parkingBoyId}/historyOrders`;
     // let getDataUrl = `http://localhost:8081/parkingBoys/${parkingBoyId}/historyOrders`
     axios
       .get(getDataUrl)

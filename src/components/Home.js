@@ -6,6 +6,7 @@ import ParkingWorkList from '../containers/ParkingWorkListContainer'
 import SelectParkingLots from '../containers/SelectParkingLotsContainer';
 
 import createHistory from 'history/createBrowserHistory'
+import GlobalUrl from '../contant/GlobalUrl'
 
 function closest(el, selector) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -42,7 +43,7 @@ export default class Home extends React.Component {
         console.log("您的浏览器支持WebSocket");
         //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
         //等同于socket = new WebSocket("ws://localhost:8083/checkcentersys/websocket/20");
-        socket = new WebSocket("https://dino-parking-system-backend.herokuapp.com/websocket/2".replace("http", "ws"));
+        socket = new WebSocket(`${GlobalUrl.request}/websocket/${localStorage.getItem('id')}`.replace("http", "ws"));
         //打开事件
         socket.onopen = function () {
             console.log("Socket 已打开");
@@ -50,7 +51,7 @@ export default class Home extends React.Component {
         };
         //获得消息事件
         socket.onmessage = function (msg) {
-            console.log(msg.data); 
+            console.log("data:"+msg.data); 
            let data = JSON.parse(msg.data)
            if(data.type==="unRead"){
               self.props.getOfflineOrder(data.unReadNum);
@@ -58,8 +59,11 @@ export default class Home extends React.Component {
               self.props.sendNewOrder(data.message);
            }else if(data.type==="freeze"){
               localStorage.removeItem("token");
-              Toast.fail('您的账号已被冻结，请联系相关经理', 3);
-              window.location.href="/login"
+              Toast.fail('您的账号已被冻结，请联系相关经理', 5);
+               setTimeout(function(){
+                  window.location.href="/login"
+               },5000)
+              
            }
             // self.props.sendNewOrder("hello World Test");
             // setTimeout(function(){

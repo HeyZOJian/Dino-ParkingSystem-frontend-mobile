@@ -1,5 +1,6 @@
 import axios from "axios";
 import {Toast,Modal} from 'antd-mobile';
+import GlobalUrl from '../contant/GlobalUrl'
 
 const RobOrderAPI = {
   initServerData(dispatch, action) {
@@ -9,14 +10,13 @@ const RobOrderAPI = {
     console.log(111)
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    let getDataUrl = 'https://dino-parking-system-backend.herokuapp.com/orders/noRob';
+    let getDataUrl = `${GlobalUrl.request}/orders/noRob`;
       //  let getDataUrl = 'http://localhost:8081/orders/noRob';
     axios
       .get(getDataUrl)
       .then((response) => {
-        const data = response
-          .data
-          .map(serverData => {
+        const data = response.data.reverse(); 
+        data.map(serverData => {
             const img = 'http://okc9ihakz.bkt.clouddn.com/%E5%B0%8F%E6%B1%BD%E8%BD%A6.svg';
             const {plateNumber,id,parkDate} = serverData;
             
@@ -43,9 +43,9 @@ const RobOrderAPI = {
   sendServerData(id,successCallBack) {
     let self = this;
     const parkingBoyId = localStorage.getItem("id");
-    console.log(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`)
+    console.log(`http://localhost:8081/orders/${id}`)
     axios.
-    put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":parkingBoyId,"status":"waitPark"})
+    put(`${GlobalUrl.request}/orders/${id}`, {"parkingBoyId":parkingBoyId,"status":"waitPark"})
     // put(`http://localhost:8081/orders/${id}`, {"parkingBoyId":2,"status":"waitPark"})
     .then(function (response) {
         console.log('success');

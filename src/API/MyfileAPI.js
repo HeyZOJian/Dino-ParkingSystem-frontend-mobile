@@ -1,6 +1,7 @@
 import axios from "axios";
 import {Toast,Modal} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
+import GlobalUrl from '../contant/GlobalUrl'
 
 const RobOrderAPI = {
   
@@ -8,7 +9,7 @@ const RobOrderAPI = {
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
     const parkingBoyId = localStorage.getItem("id");
-    let getDataUrl = `https://dino-parking-system-backend.herokuapp.com/users/${parkingBoyId}`;
+    let getDataUrl = `${GlobalUrl.request}/users/${parkingBoyId}`;
       //  let getDataUrl = 'http://localhost:8081/orders/noRob';
     axios
       .get(getDataUrl)

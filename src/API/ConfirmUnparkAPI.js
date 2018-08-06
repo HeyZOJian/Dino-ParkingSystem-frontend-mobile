@@ -1,6 +1,7 @@
 import axios from "axios";
 import {Toast} from 'antd-mobile';
 import createHistory from 'history/createBrowserHistory';
+import GlobalUrl from '../contant/GlobalUrl'
 
 const RobOrderAPI = {
   
@@ -10,9 +11,10 @@ const RobOrderAPI = {
     // const parkingBoyId = 2;
     const token = localStorage.getItem("token")
     axios.defaults.headers.common['Authorization'] = token;
-    console.log(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`)
+    console.log(`http://localhost:8081/orders/${id}`)
     axios.
-    put(`https://dino-parking-system-backend.herokuapp.com/orders/${id}`, {"parkingBoyId":parkingBoyId,"status":"finish"})
+    // put(`http://localhost:8081/${id}`, {"parkingBoyId":parkingBoyId,"status":"finish"})
+    put(`${GlobalUrl.request}/orders/${id}`, {"parkingBoyId":parkingBoyId,"status":"finish"})
     .then(function (response) {
         console.log('success');
         // alert("unpark car successfully!")

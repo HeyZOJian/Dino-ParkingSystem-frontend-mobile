@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import { Form, Icon, Input, Button, notification, Checkbox } from 'antd';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
+import GlobalUrl from '../contant/GlobalUrl'
 
 const FormItem = Form.Item;
 
@@ -66,7 +67,7 @@ class NormalLoginForm extends React.Component {
       .validateFields((err, values) => {
         if (!err) {
           //  console.log('Received values of form: ', values);
-          axios.post("https://dino-parking-system-backend.herokuapp.com/login", {
+          axios.post(`${GlobalUrl.request}/login`, {
             // axios.post("http://localhost:8081/login", {
             "username": values.userName,
             "password": values.password
@@ -86,7 +87,12 @@ class NormalLoginForm extends React.Component {
            // this.props.history.push('/EmployeeManage')
           }).catch(function (error) {
             console.log(error)
-            Modal.alert('登录失败')
+            if(error.response.headers.cookies!==undefined&&!JSON.parse(error.response.headers.cookies).status){
+              Modal.alert('您的账号已被冻结，无法登陆')
+            }else{
+              Modal.alert('账号密码错误')
+            }
+          
             // openNotification();
           })
         }

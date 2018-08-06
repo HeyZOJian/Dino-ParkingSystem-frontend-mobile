@@ -137,7 +137,7 @@ export default class ParkingWorkList extends React.Component {
               </div>
           </div>
               {data.status==='waitPark'?
-              <Button onClick={()=>this.chageSelectParkingLotsPage(data)} style={{fontSize:15}}>选择停车场</Button>
+              <Button onClick={()=>this.chageSelectParkingLotsPage(data)} style={{fontSize:15}}>查看停车场</Button>
               :<Button onClick={()=>this.chageConfirmUnparkPage(data)} style={{fontSize:15}}>取车</Button>
               }
               
@@ -180,7 +180,7 @@ export default class ParkingWorkList extends React.Component {
             <div style={{marginBottom: '8px', textAlign:"left",marginBottom:10}}>车牌号：<span style={{fontWeight: 'bold',fontSize:17}}>{this.state.allData.plateNumber}</span></div>
             {this.state.allData.status!=="waitPark"?<div style={{marginBottom:10,textAlign:"left"}}>停车场名称:&nbsp;{this.state.allData.parkingLotName}</div>:<div></div>} 
             <div style={{marginBottom:10,textAlign:"left"}}>停车时间:&nbsp;{this.state.allData.parkDate}</div>    
-            <div style={{marginBottom:10,textAlign:"left"}}>小票编号:&nbsp;{this.state.allData.receipt}</div>
+            <div style={{marginBottom:10,textAlign:"left"}}>小票编号:&nbsp;{this.state.allData.receiptId}</div>
             </div>
             
           </div>
